@@ -41,7 +41,7 @@ void wall (SDL_Window* window, SDL_Renderer* renderer);
 void food(int maps[41][41], SDL_Window* window, SDL_Renderer* renderer);
 int main (int argc, char *args[])
 {
-    cout<<"DON'T CLICK ANYWHERE ELSE WHEN YOU PLAY THIS GAME\n\n";
+    cout<<"DON'T CLICK ANYWHERE ELSE WHEN YOU PLAY THIS GAME, CLOSE CONSOLE WINDOW TO QUIT INSTANTLY\n\n";
     Sleep(1000);
     c:SDL_Window* window;
     SDL_Renderer* renderer;
