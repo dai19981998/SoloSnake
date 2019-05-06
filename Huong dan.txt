@@ -1,0 +1,47 @@
+
+
+TRONG LÚC TEST NHỚ ĐỌC KỸ NOTICE TRONG CONSOLE
+
+
+-	Cài đặt dev c++ ver 32 bit
+
+Trong tool/compiler options
+
+thẻ General thêm vào linker -lmingw32 -lSDL2main -lSDL2
+
+thẻ Directories -> Libraries thêm ...path/SDL/lib
+thẻ Directories -> C++ Includes thêm ...path/SDL/include
+<location of SDL folder>
+
+OK và compile như bình thường
+
+-	Mô tả tư tưởng thuật toán:
+
+gán giá trị để xử lý logic <có thể thay đổi tùy ý>
+
+ô trống BLANK - 997
+FOOD -999
+rắn 1: 1 đến 450 
+rắn 2: 501 đến 950
+
+Tạo một mảng 2 chiều 41*41 với tất cả các ô nhớ với giá trị ban đầu là 997 ứng với ô trống 
+
+Chiều dài của mỗi con rắn lần lượt là là l và l2
+
+Điểm đầu con rắn thứ nhất có giá trị là 1, điểm cạnh điểm đầu là 2, tương tự tăng dần đến đuôi có giá trị là l
+
+Điểm đầu con rắn thứ nhất có giá trị là 501, điểm cạnh điểm đầu là 502, tương tự tăng dần đến đuôi có giá trị là 500+l2
+
+Game chạy trong một vòng lặp đệ quy hàm move() được gọi từ main(), mỗi vòng lặp sẽ xét điểm đầu con rắn. 
+Di chuyển đầu của cả hai con rắn lên một ô theo hướng đang di chuyển <cho bởi biến h> bằng cách gán ô tiếp theo thành giá trị đầu (tương ứng mô tả bên trên là 1 và 501) sau đó tăng giá trị các ô ở vị trí cũ lên 1 đơn vị.
+
+Dẫn đến vị trí đuôi sẽ có giá trị là l+1 và 500+l2+1 -> lúc này check để ghi đè ô trắng lên điểm này và gán lại giá trị BLANK.
+
+Trong trường hợp con rắn ăn được FOOD - tức là đầu trùng với vị trí FOOD thì tăng l (hoặc l2) lên 1 -> sẽ không xóa đuôi như trường hợp bên trên - như vậy là dài ra được độ dài tương ứng.
+Sau đó gọi hàm food() để sinh thức ăn mới.
+
+Kiểm tra trường hợp đầu con rắn này trùng vào điểm đã có thân rắn -> thua
+Nếu 2 con rắn có đầu trùng vị trí -> hòa
+
+hàm wall() chỉ để vẽ hình 
+Các hàm SDL sẽ giải thích sau nhưng không cần quá quan tâm.
